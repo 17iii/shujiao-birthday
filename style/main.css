@@ -457,6 +457,7 @@ body {
 .firework-spark {
   position: absolute;
   border-radius: 50%;
+  will-change: transform, opacity;
 }
 
 /* ── Balloons ──────────────────────────────────────────────────── */
@@ -471,6 +472,7 @@ body {
   position: absolute;
   width: clamp(90px, 18vw, 160px);
   height: auto;
+  will-change: transform;
 }
 
 .section-balloons img:nth-child(even)  { left: 5%; }
@@ -536,6 +538,7 @@ body {
   position: absolute;
   width: 20px;
   visibility: hidden;
+  will-change: transform, opacity;
 }
 
 /* ── Closing ───────────────────────────────────────────────────── */

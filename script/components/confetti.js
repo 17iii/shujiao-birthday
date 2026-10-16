@@ -1,7 +1,6 @@
 (function () {
   window.Components = window.Components || {};
 
-  // Softer, modern confetti colors
   const PRESETS = [
     { fill: "#c084fc", left: "8vw",   top: "10vh"  },
     { fill: "#67e8f9", left: "30vw",  top: "20vh"  },
@@ -44,12 +43,19 @@
     },
 
     animate(tl, el) {
-      // Shorter, less intrusive confetti — scale smaller, fewer repeats
-      tl.to(el.querySelectorAll(".confetti-dot"), {
-        duration: 1, visibility: "visible", opacity: 0,
-        scale: 40, repeat: 2, repeatDelay: 0.8, stagger: 0.15,
-      })
-      .to(el, { duration: 0.3, opacity: 0 });
+      const dots = el.querySelectorAll(".confetti-dot");
+      // 时长与原版一致：单个 4.6s + stagger 0.15 + 结尾淡出 0.3s
+      tl.set(dots, { visibility: "visible", opacity: 1 })
+        .to(dots, {
+          duration: 4.6,
+          y: () => -(80 + Math.random() * 120),
+          x: () => (Math.random() - 0.5) * 80,
+          rotation: 180,
+          opacity: 0,
+          stagger: 0.15,
+          ease: "sine.out",
+        })
+        .to(el, { duration: 0.3, opacity: 0 });
     },
   };
 })();
