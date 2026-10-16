@@ -47,6 +47,15 @@ function loadScript(src) {
 
 // ── Main ─────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", async () => {
+  // 手机端降低粒子数量，减少卡顿
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    CONFIG.sections.forEach((s) => {
+      if (typeof s.count === "number" && s.count > 8) {
+        s.count = Math.ceil(s.count / 2);
+      }
+    });
+  }
+
   applyTheme(currentMode);
   createThemeToggle();
 
