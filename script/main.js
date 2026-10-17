@@ -47,10 +47,10 @@ function loadScript(src) {
 
 // ── Main ─────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", async () => {
-  // 手机端降低粒子数量，减少卡顿
+  // 手机端只削减重的粒子（星星/气球），烟花彩带保持原数量以保证时长
   if (window.matchMedia("(max-width: 768px)").matches) {
     CONFIG.sections.forEach((s) => {
-      if (typeof s.count === "number" && s.count > 8) {
+      if ((s.type === "stars" || s.type === "balloons") && typeof s.count === "number") {
         s.count = Math.ceil(s.count / 2);
       }
     });
