@@ -90,9 +90,9 @@
         tl.to(paraChars, {
           duration: 0.01,
           opacity: 1,
-          stagger: isLast ? 0.18 : 0.12,
+          stagger: isLast ? 0.19 : 0.13,
           ease: "none",
-        }, i === 0 ? "+=0.3" : "+=1.2");
+        }, i === 0 ? "+=0.3" : "+=0.95");
       });
     },
   };
